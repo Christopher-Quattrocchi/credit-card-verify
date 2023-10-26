@@ -68,7 +68,7 @@ function lastDigitCheck(transformedArray) {
 
 function verifyCompany(initialNum) {
   let numString = initialNum.toString();
-  if (numString.startsWith("34") || numString.startsWith("37") && numString.length === 15) {
+  if ((numString.startsWith("34") || numString.startsWith("37")) && numString.length === 15) {
     return "Your card is an American Express.";
   } else if (numString.startsWith("4")) {
     return "Your card is a Visa.";
