@@ -1,17 +1,37 @@
+// UI Logic
+window.addEventListener("load", function() {
+  console.log("form loaded");
+  document.querySelector("form#getCardNumber").addEventListener("submit", handleSubmission);
+})
+
+function handleSubmission(event) {
+  event.preventDefault();
+  const initialNum = document.querySelector("input#inputNumber").value;
+  result = mainFunction(initialNum);
+  const pEle = document.createElement("p");
+  pEle.append(result);
+  outputDiv = document.querySelector("div#output-div");
+  outputDiv.append(pEle);
+}
+
+
 // Business Logic
 
 
 //this is the 'organizer' function that will call other functions
 function mainFunction(initialNum) {
-  let checkForValidInput = verifyCompany(initialNum);
-  console.log("check for valid input:" + checkForValidInput);
+  let digitCheck = verifyDigitLength(initialNum);
+  if (digitCheck === false) {
+    return "Please enter a valid 15 or 16 digit number";
+  } else {
+    let verifyCardCompany = verifyCompany(initialNum);
+    result = verifyCardCompany; 
+  }
+
   let transformedArray = transformNumber(initialNum);
-  console.log("transformedArray:" + transformedArray);
+  
   let verifyNumArray = lastDigitCheck(transformedArray);
-  console.log("verify:" + verifyNumArray);
-  // let stringNum = transformedArray.join("");
-  // let transformedNum = parseInt(stringNum);
-  // console.log(transformedNum); 
+  return result.concat(verifyNumArray);
 }
 
 function transformNumber(initialNum) {
@@ -38,26 +58,35 @@ function transformNumber(initialNum) {
 
 function lastDigitCheck(transformedArray) {
   let sumOfArray = transformedArray.reduce((acc, cur) => acc + cur, 0);
-  if (sumOfArray[1] === 0) {
-    return "valid";
+  let stringSum = sumOfArray.toString();
+  console.log(sumOfArray);
+  if (stringSum.charAt(1) === "0") {
+    return " The number is valid.";
   } else {
-    return "invalid";
+    return " The number is invalid.";
   }
 }
 
 function verifyCompany(initialNum) {
   let numString = initialNum.toString();
-  if ((numString.length !== 15) && (numString.length !== 16)) {
-    return "Please enter a 15 or 16 digit credit card number";
-  } else if (numString.startsWith("34") || numString.startsWith("37") && numString.length === 15) {
-    return "American Express";
+  if (numString.startsWith("34") || numString.startsWith("37") && numString.length === 15) {
+    return "Your card is an American Express.";
   } else if (numString.startsWith("4")) {
-    return "Visa";
+    return "Your card is a Visa.";
   } else if (numString.startsWith("5")) {
-    return "MasterCard";
+    return "Your card is a MasterCard.";
   } else if (numString.startsWith("6")) {
-    return "Discover";
+    return "Your card is Discover.";
   } else {
-    return "You found a bug!";
+    return "Your card does is not from a major credit card company.";
+  }
+}
+
+function verifyDigitLength(initialNum) {
+  let numString = initialNum.toString();
+  if ((numString.length !== 15) && (numString.length !== 16)) {
+    return false;
+  } else {
+    return true;
   }
 }
