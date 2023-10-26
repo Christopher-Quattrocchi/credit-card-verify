@@ -17,7 +17,6 @@ function handleSubmission(event) {
 
 // Business Logic
 
-
 //this is the 'organizer' function that will call other functions
 function mainFunction(initialNum) {
   let digitCheck = verifyDigitLength(initialNum);
@@ -63,7 +62,7 @@ function lastDigitCheck(transformedArray) {
   if (stringSum.charAt(1) === "0") {
     return " The number is valid.";
   } else {
-    return " The number is invalid.";
+    return " The number is invalid because it does not pass the Luhn Algorithm";
   }
 }
 
