@@ -1,5 +1,5 @@
 // UI Logic
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
   console.log("form loaded");
   document.querySelector("form#getCardNumber").addEventListener("submit", handleSubmission);
 })
@@ -24,11 +24,11 @@ function mainFunction(initialNum) {
     return "Please enter a valid 15 or 16 digit number";
   } else {
     let verifyCardCompany = verifyCompany(initialNum);
-    result = verifyCardCompany; 
+    result = verifyCardCompany;
   }
 
   let transformedArray = transformNumber(initialNum);
-  
+
   let verifyNumArray = lastDigitCheck(transformedArray);
   return result.concat(verifyNumArray);
 }
@@ -68,7 +68,8 @@ function lastDigitCheck(transformedArray) {
 
 function verifyCompany(initialNum) {
   let numString = initialNum.toString();
-  if ((numString.startsWith("34") || numString.startsWith("37")) && numString.length === 15) {
+  if ((numString.startsWith("34") || numString.startsWith("37"))
+    && numString.length === 15) {
     return "Your card is an American Express.";
   } else if (numString.startsWith("4")) {
     return "Your card is a Visa.";
