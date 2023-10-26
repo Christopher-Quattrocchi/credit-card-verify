@@ -1,10 +1,15 @@
 // Business Logic
 
+
+//this is the 'organizer' function that will call other functions
 function mainFunction(initialNum) {
   let transformedArray = transformNumber(initialNum);
-  let stringNum = transformedArray.join("");
-  let transformedNum = parseInt(stringNum);
-  console.log(transformedNum); 
+  console.log("transformedArray:" + transformedArray);
+  let verifyNumArray = lastDigitCheck(transformedArray);
+  console.log("verify:" + verifyNumArray);
+  // let stringNum = transformedArray.join("");
+  // let transformedNum = parseInt(stringNum);
+  // console.log(transformedNum); 
 }
 
 function transformNumber(initialNum) {
@@ -29,4 +34,11 @@ function transformNumber(initialNum) {
   return newNum;
 }
 
-// function lastDigitCheck(newNum)
+function lastDigitCheck(transformedArray) {
+  let sumOfArray = transformedArray.reduce((acc, cur) => acc + cur, 0);
+  if (sumOfArray[1] === 0) {
+    return "valid";
+  } else {
+    return "invalid"
+  }
+}
