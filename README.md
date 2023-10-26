@@ -20,19 +20,22 @@ Test: "It will check if the last digit of the sum is 0"
 Code: lastDigitCheck(50);
 Expected Output: valid
 
-
+Success
 Test: "Check the first digit(s) of the card"
 Code: verifyCompany(4744 4444 4444 4444);
 Expected Output: 47
 
+Success
 Test: "match the first digit(s) with what companies issue"
 Code: verifyCompany(4744 4444 4444 4444);
 Expected Output: Visa
 
+Success
 Test: "It will check to make sure that the number is 15 or 16 digits (and are numbers)"
 Code: isValid(4102 0808 6043 5620)
 Expected Output: true
 
+Success
 Test: "If 16 digits, must start with 4, 5, or 6. If 15 digits, must start with 34 or 37"
 Code: verifyCompany(4102 0808 6043 5620)
 Expected Output: Visa or true depending on how we build it
