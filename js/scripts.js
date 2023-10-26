@@ -3,6 +3,8 @@
 
 //this is the 'organizer' function that will call other functions
 function mainFunction(initialNum) {
+  let checkForValidInput = verifyCompany(initialNum);
+  console.log("check for valid input:" + checkForValidInput);
   let transformedArray = transformNumber(initialNum);
   console.log("transformedArray:" + transformedArray);
   let verifyNumArray = lastDigitCheck(transformedArray);
@@ -39,6 +41,23 @@ function lastDigitCheck(transformedArray) {
   if (sumOfArray[1] === 0) {
     return "valid";
   } else {
-    return "invalid"
+    return "invalid";
+  }
+}
+
+function verifyCompany(initialNum) {
+  let numString = initialNum.toString();
+  if ((numString.length !== 15) && (numString.length !== 16)) {
+    return "Please enter a 15 or 16 digit credit card number";
+  } else if (numString.startsWith("34") || numString.startsWith("37") && numString.length === 15) {
+    return "American Express";
+  } else if (numString.startsWith("4")) {
+    return "Visa";
+  } else if (numString.startsWith("5")) {
+    return "MasterCard";
+  } else if (numString.startsWith("6")) {
+    return "Discover";
+  } else {
+    return "You found a bug!";
   }
 }

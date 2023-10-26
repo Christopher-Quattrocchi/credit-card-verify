@@ -1,20 +1,25 @@
 Describe:
 
+Success
 Test: "It will double every other digit, starting with second number"
 Code: dubNum(4102 0808 8043 5620)
 Expected Output: (4204 0707 8046 5320)
 
+Success
 Test: "It will recognize if the sum is two digits and add those together"
 Code: testAdd (8*2 = 1+6)
 Expected Output: 7
 
+Success
 Test: "It will add the digits of the new number"
 Code: testCard(4204 0707 8046 5320)
 Expected Output: 4 + 2 + 0 + 4 + 0 + 7 + 0 + 7 + 8 + 0 + 4 + 6 + 5 + 3 + 2 + 0 = 52
 
+Success
 Test: "It will check if the last digit of the sum is 0"
 Code: lastDigitCheck(50);
 Expected Output: valid
+
 
 Test: "Check the first digit(s) of the card"
 Code: verifyCompany(4744 4444 4444 4444);
